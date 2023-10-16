@@ -11,8 +11,8 @@ async function postToFacebook() {
 
         // Define the post data.
         const postData = {
-            link: 'https://www.lokshahi.com/news/lokshahi-politics/ashish-shelar-on-uddhav-thackeray-5',
-            message: 'Check out this news article: https://www.lokshahi.com/news/lokshahi-politics/ashish-shelar-on-uddhav-thackeray-5',
+            link: 'https://lokshahilive.com/islampur-144944/',
+            message: 'Check out this news article: https://lokshahilive.com/islampur-144944/',
         };
 
         // Make a POST request to post on your Facebook page using the Graph API.

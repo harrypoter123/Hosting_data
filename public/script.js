@@ -1,37 +1,72 @@
-// script.js
+
+
+// document.addEventListener("DOMContentLoaded", function () {
+//     const postButton = document.getElementById("post-button");
+//     const postToTwitterButton = document.getElementById("post-to-twitter-button");
+
+//     postButton.addEventListener("click", postToFacebook);
+//     postToTwitterButton.addEventListener("click", postToTwitter);
+
+//     async function postToFacebook() {
+//         // ... (existing code for posting to Facebook)
+//     }
+
+//     async function postToTwitter() {
+//         try {
+//             // Define your Twitter API credentials
+//             consumer_key: 'tmpVBjDIWlpz70LOsbpjPQXFk';
+//             consumer_secret: 'tGzNVXE9WR6uhqYXrn8ZeqE7VvL2XUTa2EqhoWimS3bMO0mpqR';
+//             access_token: '1711230530438742016-NCcf4z46Tmr5kzPivW8yE3GkDkiGhj';
+//             access_token_secret: 'Yqm78IYaeMACB2Ib3OiGJQzzqyqcXqQZHLpW9PiFcPwVY';
+
+//             // Define the message to post on Twitter
+//             const tweetMessage = 'Check out this news article: https://lokshahilive.com/islampur-144944/';
+
+//             // Initialize the Twit client for Twitter
+//             const T = new Twit({
+//                 consumer_key: consumerKey,
+//                 consumer_secret: consumerSecret,
+//                 access_token: accessToken,
+//                 access_token_secret: accessTokenSecret,
+//             });
+
+//             // Post the tweet
+//             T.post('statuses/update', { status: tweetMessage }, (err, data, response) => {
+//                 if (err) {
+//                     console.error('Failed to post to Twitter:', err);
+//                 } else {
+//                     alert('Successfully posted to Twitter!');
+//                 }
+//             });
+//         } catch (error) {
+//             console.error(error);
+//         }
+//     }
+// });
+
+
 document.addEventListener("DOMContentLoaded", function () {
-    document.getElementById("post-button").addEventListener("click", postToFacebook);
+    document.getElementById("post-button-twitter").addEventListener("click", postToTwitter);
 });
 
-async function postToFacebook() {
+async function postToTwitter() {
+    const tweetText = 'Check out this news article: https://www.lokshahi.com/news/lokshahi-politics/ashish-shelar-on-uddhav-thackeray-5';
+
     try {
-        // Define your access token and Facebook Page ID.
-        const accessToken = 'EAAS5FCpbQAQBOycdSJ8gAAtcBJiBunU5HOuZBSYX7iZA5Yp9ZBRyYPCZCFyh0K6ZC4ZCCwAVaZCc04yv1NKoyJDdeIfjZAvjvA7mWiO25RXbwqeeoMTmzkCFdbuVEup2PAFUVYR0zq6FV1XLL5dHZCDh2d8SrFR9WE2rpCx4g2P4d80bAZADSYXfI6aPZBZATZCStMEwycZAvhW8SzUBsZBvg48p9KkYcAI2EPEE3qn';
-        const pageId = '135945206274101';
-
-        // Define the post data.
-        const postData = {
-            link: 'https://lokshahilive.com/islampur-144944/',
-            message: 'Check out this news article: https://lokshahilive.com/islampur-144944/',
-        };
-
-        // Make a POST request to post on your Facebook page using the Graph API.
-        const response = await fetch(`https://graph.facebook.com/v18.0/${pageId}/feed`, {
+        const response = await fetch('http://localhost:3000/post-to-twitter', {
             method: 'POST',
             headers: {
-                'Authorization': `Bearer ${accessToken}`,
+                'Content-Type': 'application/json',
             },
-            body: new URLSearchParams(postData),
+            body: JSON.stringify({ tweetText }),
         });
 
-        const data = await response.json();
-        if (data.id) {
-            alert('Successfully posted to Facebook!');
+        if (response.status === 200) {
+            console.log('Successfully posted to Twitter!');
         } else {
-            alert('Failed to post to Facebook. Please check your access token and permissions.');
+            console.error('Failed to post to Twitter:', response.statusText);
         }
     } catch (error) {
-        console.error(error);
+        console.error('An error occurred:', error);
     }
 }
-

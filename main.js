@@ -214,6 +214,7 @@ const app = express();
 app.use(express.json());
 app.use(cors());
 app.use(express.static('public'));
+app.set('view', 'main');
 
 
 const client = new Twitter({
@@ -229,7 +230,7 @@ app.post('/post-to-twitter', (req, res) => {
     client.post('statuses/update', { status: tweetText }, (error, tweet, response) => {
       if (!error) {
         res.send('Successfully posted to Twitter!');
-        res.render('main');
+        // res.render('main');
       } else {
         console.error('Twitter API Error:', error);
         res.status(400).json({ error: 'Failed to post to Twitter' });

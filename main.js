@@ -206,7 +206,6 @@
 
 
 
-
 const express = require('express');
 const Twitter = require('twitter');
 const cors = require('cors'); 
@@ -216,8 +215,8 @@ app.use(express.json());
 app.use(cors());
 
 const client = new Twitter({
-  consumer_key: '6mOePJfepaXah9HvnRGkZi0Ve',
-  consumer_secret: '5KX4CgA9hXUBo7SM9r6AAt7iu9m0Q2ChLdDwN4Cu5IgQb241HE',
+  consumer_key: 'UXU3c0tVTUZ0NFNLMjBiV2t5NWM6MTpjaQ',
+  consumer_secret: 'Mdv56nGgBVvhCHwg_FvKJzrHWkH0oHkJSivjtbSLWCrdjallMk',
   access_token_key: '1711230530438742016-Jpj3PgYyH63iV0pOweZasQvqLXi02j',
   access_token_secret: '5D8pdt85rPJDGwf2xrt4K3nq8JuJaWr70xxs0ksQdukKM',
 });

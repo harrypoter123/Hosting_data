@@ -44,7 +44,6 @@
 //     }
 // });
 
-
 document.addEventListener("DOMContentLoaded", function () {
     document.getElementById("post-button-twitter").addEventListener("click", postToTwitter);
 });
